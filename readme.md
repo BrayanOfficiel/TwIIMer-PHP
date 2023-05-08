@@ -4,7 +4,7 @@
 
 Twiimer est un réseau social type twitter, développé en PHP/MySQL, HTML, CSS. Il a été réalisé dans le cadre d'un projet scolaire à l'IIM.
 
-Lien de la vidéo : `uploading...`
+[Lien de la vidéo](https://youtu.be/kkdxUpA6Dmw)
 
 ## Installation
 
