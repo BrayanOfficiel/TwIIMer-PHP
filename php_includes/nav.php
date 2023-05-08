@@ -16,10 +16,11 @@
             <?php
             if (isset($_GET['users']) && !empty($_GET['users'])) {
 
-                echo "<a>" . "<img style='margin-right: 10px' width='20' src=" . $get_user_data["photo"] . ">" . $get_user_data["identifiant"] . "</a>";
+                echo "<a><img style='margin-right: 10px' width='20' src=" . $get_user_data["photo"] . ">" . $get_user_data["identifiant"] . "</a>";
             }
-            echo "<a href='inscription.php'>S'inscrire</a>";
+            echo "";
             ?>
         </li>
+        <li><a href='inscription.php'>S'inscrire</a></li>
     </ul>
 </nav>

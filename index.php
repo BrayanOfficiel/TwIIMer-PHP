@@ -51,6 +51,8 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                 </div>
             </div>
         </section>
+
+
         <section class="tweet-section">
             <div class='tweet_box'>
                 <div class='tweet_header'>
@@ -73,6 +75,7 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                         }
                     }
                     ?>
+
                     <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
                         <input type="hidden" name="user" value="<?= $current_user ?>" id="">
                         <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
@@ -90,7 +93,7 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
             <div class="tweets-header">
                 <h1>Les Tweems</h1>
 
-                <!-- form pour rechercher -->
+                <!-- form pour rechercher et trier-->
 
                 <form class="tweet_search" action="php_includes/tweet_search_and_sort.php" method="POST">
                     <input type="hidden" name="user" value="<?= $current_user ?>" id="">

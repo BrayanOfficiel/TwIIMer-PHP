@@ -6,15 +6,16 @@ $lname = $_POST['lname'];
 $fname = $_POST['fname'];
 $username = $_POST['username'];
 $email = $_POST['email'];
-$photo = $_POST['photo'];
 $password = $_POST['password'];
 $confirm_password = $_POST['password_confirm'];
+
+$photo = $_POST['photo'];
 
 if (empty($photo)) {
     $photo = "/img/profile_500.png";
 }
 
-if (!empty($username) && !empty($email) && !empty($password) && !empty($confirm_password)) {
+if (!empty($fname) && !empty($lname) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm_password)) {
     if ($password === $confirm_password) {
         $requete = "SELECT * FROM users WHERE identifiant = :username";
         $requete = $database->prepare($requete);

@@ -14,4 +14,4 @@ Pour utiliser le projet, il faut créer un compte. Une fois connecté, vous pouv
 
 ## Auteurs
 
-- [Boudjemeline Haider]
+- Boudjemeline Haider

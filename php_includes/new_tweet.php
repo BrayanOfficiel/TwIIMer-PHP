@@ -4,7 +4,6 @@ require "connexionDB.php";
 
 $tweet = $_POST['tweet'];
 $user = $_POST['user'];
-$user = $_POST['user'];
 
 if (empty($tweet) or $tweet == "") {
     header("Location: /index.php?error=tweetVide");
