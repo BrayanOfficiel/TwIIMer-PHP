@@ -1,4 +1,7 @@
-# Twiimer
+<h1 align="center">
+  <img src="img/logo_400.png" width="100">
+  <p align="center">TwIIMer</p>
+</h1>
 
 ## Description
 
