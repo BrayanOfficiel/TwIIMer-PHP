@@ -34,7 +34,7 @@ require "php_includes/connexionDB.php";
                 <input required placeholder="Nom" type="text" name="lname">
                 <input required placeholder="Prénom" type="text" name="fname">
                 <input required placeholder="Identifiant" type="text" name="username">
-                <input placeholder="Photo de profil" type="text" name="photo">
+                <input placeholder="Lien de votre photo de profil" type="text" name="photo">
                 <input required placeholder="e-mail" type="email" name="email">
                 <input required placeholder="Mot de passe" type="password" name="password">
                 <input required placeholder="Confirmer le mot de passe" type="password" name="password_confirm">

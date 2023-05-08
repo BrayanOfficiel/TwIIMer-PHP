@@ -6,6 +6,7 @@ $lname = $_POST['lname'];
 $fname = $_POST['fname'];
 $username = $_POST['username'];
 $email = $_POST['email'];
+$photo = $_POST['photo'];
 $password = $_POST['password'];
 $confirm_password = $_POST['password_confirm'];
 
@@ -15,7 +16,7 @@ if (empty($photo)) {
 
 if (!empty($username) && !empty($email) && !empty($password) && !empty($confirm_password)) {
     if ($password === $confirm_password) {
-        $requete = "SELECT * FROM users WHERE username = :username";
+        $requete = "SELECT * FROM users WHERE identifiant = :username";
         $requete = $database->prepare($requete);
         $requete->execute([
             ":username" => $username
@@ -39,7 +40,7 @@ if (!empty($username) && !empty($email) && !empty($password) && !empty($confirm_
                     ":fname" => $fname,
                     ":photo" => $photo
                 ]);
-                header("Location: /index.php?user=$username");
+                header("Location: /index.php?users=$username");
             } else {
                 header("Location: /inscription.php?error=email");
             }

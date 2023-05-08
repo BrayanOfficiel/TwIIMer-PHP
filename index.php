@@ -1,5 +1,6 @@
 <?php
 require "php_includes/connexionDB.php";
+
 if (!isset($_GET['users']) || $_GET['users'] == "") {
     $user_logged = false;
 } else {
@@ -38,6 +39,8 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                             foreach ($users as $user) {
                                 echo "<option value=" . $user['identifiant'] . ">" . $user['identifiant'] . "</option>";
                             }
+                            echo "<option disabled value=''>---------</option>";
+                            echo "<option value=''>Déconnexion</option>";
                             ?>
                         </select>
                         <button type="submit">Se connecter</button>
