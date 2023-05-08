@@ -1,35 +1,17 @@
-<!-- readme -->
+# Twiimer
 
-# [![Build Status](https://travis-ci.org/robertdebock/ansible-role-ntp.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-ntp) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-robertdebock.ntp-blue.svg)](https://galaxy.ansible.com/robertdebock/ntp)
+## Description
 
-Install and configure ntp, a daemon to keep your system time in sync.
+Twiimer est un réseau social type twitter, développé en PHP/MySQL, HTML, CSS. Il a été réalisé dans le cadre d'un projet scolaire à l'IIM.
 
-## Requirements
+## Installation
 
-- pip packages listed in [requirements.txt](
+Pour installer le projet, il faut cloner le repository sur votre machine. Ensuite, il faut créer une base de données nommée `portail_restart` et importer le fichier `twiimer.sql` dans votre base de données.
 
-## Role Variables
+## Utilisation
 
-Available variables are listed below, along with default values (see defaults/main.yml):
+Pour utiliser le projet, il faut créer un compte. Une fois connecté, vous pouvez créer des twiims, les modifier et les supprimer. Vous pouvez également suivre d'autres utilisateurs et voir leurs twiims sur votre page d'accueil.
 
-```
+## Auteurs
 
-# The servers to use for time synchronization.
-ntp_servers:
-  - 0.pool.ntp.org
-  - 1.pool.ntp.org
-  - 2.pool.ntp.org
-  - 3.pool.ntp.org
-
-
-# The servers to use for time synchronization.
-
-# The servers to use for time synchronization.
-ntp_servers:
-  - 0.pool.ntp.org
-  - 1.pool.ntp.org
-  - 2.pool.ntp.org
-  - 3.pool.ntp.org
-
-# The servers to use for time synchronization.
-```
+- [Boudjemeline Haider]
