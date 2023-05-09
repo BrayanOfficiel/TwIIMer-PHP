@@ -1,5 +1,4 @@
 <head>
-
     <?php
     date_default_timezone_set('Europe/Paris');
     $stylesheet = "/style.css?version=" . date("H:i:s_d/m/Y", filemtime('style.css'));
