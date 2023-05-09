@@ -15,7 +15,7 @@ Pour installer le projet, il faut cloner le repository sur votre machine. Ensuit
 
 ## Utilisation
 
-Pour utiliser le projet, il faut créer un compte. Une fois connecté, vous pouvez créer des twiims, les modifier et les supprimer. Vous pouvez également suivre d'autres utilisateurs et voir leurs twiims sur votre page d'accueil.
+Pour utiliser le projet, il faut créer un compte. Une fois connecté, vous pouvez créer des tweems, les modifier et les supprimer.
 
 ## Auteurs
 
