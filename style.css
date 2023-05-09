@@ -40,7 +40,8 @@ nav {
 }
 
 .nav_logo .logo_text {
-  font-size: 30px;
+  font-family: "veneer", sans-serif;
+  font-size: 34px;
   padding: 10px 20px;
   text-align: center;
 }
@@ -132,7 +133,7 @@ section {
   border: 1px solid #ccc;
   resize: vertical;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 /* ------------------------------- */
@@ -140,13 +141,12 @@ section {
 .tweet_suppr {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 30px;
   color: white;
   padding: 10px;
   border: 1px solid #4caf50;
   background-color: #5bd35f9b;
   border-radius: 10px;
-  margin-bottom: 10px;
   text-shadow: 0px 0px 5px #000;
 }
 
@@ -212,7 +212,6 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .tweet_box .tweet_header .tweet_author {

@@ -14,7 +14,14 @@ if ($sort == "ancien") {
     $sort = "DESC";
 }
 
+echo $search;
+echo $sort;
+echo $user;
 
-header("Location: /index.php?search=$search&sort=$sort&users=$user");
+if (empty($user) || $user == "") {
+    header("Location: /index.php?search=$search&sort=$sort");
+} else {
+    header("Location: /index.php?search=$search&sort=$sort&users=$user");
+}
 
 ?>

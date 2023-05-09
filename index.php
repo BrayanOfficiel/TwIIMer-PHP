@@ -3,6 +3,7 @@ require "php_includes/connexionDB.php";
 
 if (!isset($_GET['users']) || $_GET['users'] == "") {
     $user_logged = false;
+    $current_user = "";
 } else {
     $user_logged = true;
     $current_user = $_GET['users'];
@@ -15,7 +16,7 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
 
 <head>
     <?php require "php_includes/head.php" ?>
-    <title>TwIIMer</title>
+    <title>Accueil - TwIIMer</title>
 </head>
 
 <body>
@@ -61,27 +62,31 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                         if ($user_logged == true) {
                             echo "Bienvenue @$current_user</h1>";
                             echo "le " . date('d/m/Y à H:i');
-                        } else {
-                            echo "Bienvenue sur TwIIMer, connectez-vous ou inscrivez-vous</h1>";
+                            ?>
+                    </div>
+                    <div>
+
+                        <?php
+                        if (isset($_GET['error'])) {
+                            if ($_GET['error'] == "tweetVide") {
+                                echo "<p class='error'>Veuillez écrire quelque chose</p>";
+                            }
                         }
                         ?>
-                </div>
-                <div>
 
+                        <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
+                            <input type="hidden" name="user" value="<?= $current_user ?>" id="">
+                            <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
+                            <button type="submit">Tweemer</button>
+                        </form>
+                    </div>
                     <?php
-                    if (isset($_GET['error'])) {
-                        if ($_GET['error'] == "tweetVide") {
-                            echo "<p class='error'>Veuillez écrire quelque chose</p>";
+                        } else {
+                            echo "Bienvenue sur TwIIMer, connectez-vous ou inscrivez-vous</h1>";
+                            echo '</div>';
                         }
-                    }
-                    ?>
+                        ?>
 
-                    <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
-                        <input type="hidden" name="user" value="<?= $current_user ?>" id="">
-                        <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
-                        <button type="submit">Tweemer</button>
-                    </form>
-                </div>
             </div>
 
         </section>
@@ -162,6 +167,9 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
 
     <footer>
         <p>© 2023 TwIIMer, Inc.</p>
+        <a href="/landing/index.html">
+            Landing Page
+        </a>
     </footer>
 
     <script>

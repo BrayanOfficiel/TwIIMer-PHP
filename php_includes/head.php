@@ -8,5 +8,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= $stylesheet ?>" />
-    <title>IIM Restart - PHP/MySQL</title>
+    <link rel="stylesheet" href="https://use.typekit.net/awq0vst.css" />
+    <link rel="icon" href="/img/logo_400.png" />
 </head>
