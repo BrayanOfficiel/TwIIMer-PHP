@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<!-- TwIIMer by Boudjemeline Haider -->
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TwIIMer</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/awq0vst.css" />
+    <link rel="icon" href="/img/logo_400.png" />
+  </head>
+
+  <body>
+    <header>
+      <div class="nav_title">
+        <img src="images/macos_twimmer_logo_or.png" alt="Logo TwIIMer" />
+        <h1 class="title">TwIIMer</h1>
+      </div>
+      <nav>
+        <ul>
+          <li id="li1"><a href="/index.php">Accueil</a></li>
+          <li id="li2"><a href="/index.php">Connexion</a></li>
+          <li id="li3"><a href="#">À propos</a></li>
+          <li id="li4"><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h2>Bienvenue sur <a href="index.html" class="title">TwIIMer</a></h2>
+        <p>
+          Le réseau social de l'IIM, où vous pouvez partager vos projets, vos
+          passions et vos expériences.
+        </p>
+        <a href="/inscription.php" class="btn">S'inscrire</a>
+      </section>
+
+      <section class="features">
+        <h3>Pourquoi utiliser TwIIMer ?</h3>
+        <div class="features_2">
+          <div class="feature">
+            <img src="images/macos_connect_or.png" alt="Icône de connexion" />
+            <h4>Connectez-vous avec vos camarades</h4>
+            <p>
+              Retrouvez facilement vos camarades de classe et restez en contact
+              avec eux, même après la fin des cours.
+            </p>
+          </div>
+          <div class="feature">
+            <img src="images/macos_share_or.png" alt="Icône de partage" />
+            <h4>Partagez vos projets</h4>
+            <p>
+              Montrez vos projets et recevez des feedbacks de vos camarades et
+              de la communauté de l'IIM.
+            </p>
+          </div>
+          <div class="feature">
+            <img src="images/macos_discover_or.png" alt="Icône de découverte" />
+            <h4>Découvrez de nouvelles passions</h4>
+            <p>
+              Explorez les centres d'intérêt de vos camarades et découvrez de
+              nouvelles passions grâce à notre algorithme de recommandations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <h3>
+          Rejoignez <a href="/inscription.php" class="title">TwIIMer</a> dès
+          maintenant !
+        </h3>
+        <a href="/inscription.php" class="btn">S'inscrire</a>
+        <footer>
+          © <a href="index.html" class="title2">TWIIMER</a>
+          <span id="footer"></span> - LE réseau social de l'IIM
+        </footer>
+      </section>
+    </main>
+
+    <script>
+      // 			annee = new Date().getFullYear();
+      // document.getElementById("footer").innerHTML = annee;
+      // const voisin = "Amine Wahab";
+      // const ville = "Paris";
+      // let population = 2400000;
+      // console.log(`${voisin} habite à ${ville} qui est une ville de ${population} habitants`);
+      //
+      // //const prenom = "adrien";
+      // //const nom = "de roffignac"
+      // const nom_compose = prenom + " " + nom
+      // const nom_complet = nom_compose.split(" ");
+      //
+      // for (let i = 0; i < nom_complet.length; i++) {
+      // 				nom_complet[i] = nom_complet[i][0].toUpperCase() + nom_complet[i].substr(1);
+      // 			};
+      //
+      // 			nom_complet.join(" ");
+      //
+      // 			console.log(nom_complet);
+
+      // ------------------------------
+
+      function evenOrOdd(nombre) {
+        if (nombre % 2 == 0) {
+          return "even";
+        } else {
+          return "odd";
+        }
+      }
+
+      nbr = 20;
+
+      document.getElementById("eod").innerHTML = evenOrOdd(nbr);
+
+      // ------------------------------
+
+      let nom = "carlier";
+      let prenom = "emma";
+
+      function capitalize(nom, prenom) {
+        nom = nom[0].toUpperCase() + nom.substring(1);
+        prenom = prenom[0].toUpperCase() + prenom.substring(1);
+        return `${prenom} ${nom}`;
+      }
+
+      console.log(capitalize(nom, prenom));
+
+      // ------------------------------
+
+      function myList(element) {
+        document.getElementById(
+          "list"
+        ).innerHTML = `<ul><li>${element}</li></ul>`;
+      }
+
+      myList("Element de test");
+
+      // ------------------------------
+
+      function sumOfNegatuve(numbers) {
+        let sum = 0;
+        numbers.forEach((number) => {
+          if (number < 0) {
+            sum = sum + number;
+          }
+        });
+        return sum;
+      }
+
+      console.log(sumOfNegatuve([-1, 4, -2, 9, 18]));
+    </script>
+  </body>
+</html>

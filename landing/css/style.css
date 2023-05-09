@@ -1,0 +1,291 @@
+/* Styles généraux */
+
+body {
+   font-family: arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   animation: fadein 1s;
+}
+
+/* En-tête */
+header {
+   background-color: #ffffff;
+   color: rgb(254, 128, 0);
+   display: flex;
+   position: sticky;
+   top: 0;
+   justify-content: space-between;
+   align-items: center;
+   padding: 25px 35px;
+   z-index: 2
+}
+
+.nav_title {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.title {
+   font-family: "veneer", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+   color: white;
+   text-decoration: none;
+}
+
+.title2 {
+   font-family: "mr-eaves-modern", sans-serif;
+   font-weight: 700;
+   font-style: normal;
+   color: white;
+   text-decoration: none;
+}
+
+.title:hover,
+.title2:hover {
+   text-decoration: underline;
+}
+
+header h1 {
+   margin: 0;
+   display: inline;
+   color: rgb(254, 128, 0) !important;
+   font-size: 3em;
+   text-decoration: none !important;
+}
+
+header img {
+   height: 64px;
+   margin-right: 10px;
+}
+
+nav {
+   display: flex;
+   align-items: center;
+}
+
+nav ul {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+}
+
+nav ul li {
+   margin-left: 10px;
+}
+
+nav ul li:first-child {
+   margin-left: 0;
+}
+
+nav a {
+   color: rgb(255, 128, 0);
+   text-decoration: none;
+   padding: 5px;
+   border-radius: 5px;
+   transition: .5s;
+   font-family: "mr-eaves-modern", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+   font-size: 1.5em;
+}
+
+nav a:hover {
+   color: #343a40;
+   transform: scale(1.02);
+}
+
+@media (max-width: 700px) {
+   header {
+      min-height: 10vh;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 25px 0px;
+   }
+
+   nav {
+      margin-top: 25px;
+   }
+
+   nav a {
+      font-size: 5vw;
+   }
+}
+
+/* Section Hero */
+.hero {
+   background: url(../images/cfa.jpg) center center / cover no-repeat;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: calc(100vh - 60px);
+   text-shadow:
+      0 0 2px rgba(0, 0, 0, 1),
+      0 0 5px rgba(0, 0, 0, 1),
+      0 0 15px rgba(0, 0, 0, 1);
+   color: white;
+   text-align: center;
+   padding: 15px;
+}
+
+.hero h2 {
+   font-size: 3.5rem;
+   margin-bottom: 20px;
+   font-family: "mr-eaves-modern", sans-serif;
+   font-weight: 700;
+   font-style: normal;
+}
+
+.hero h2 a {
+   font-size: 3.5rem;
+   font-family: "veneer", sans-serif;
+   font-weight: 700;
+   font-style: normal;
+   color: white;
+   text-decoration: none !important;
+   text-shadow:
+      0 0 2px rgba(0, 0, 0, 1),
+      0 0 5px rgba(0, 0, 0, 1);
+}
+
+.hero p {
+   font-size: 2rem;
+   text-align: center;
+   max-width: 500px;
+   margin-bottom: 40px;
+   font-family: "mr-eaves-modern", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+}
+
+.btn {
+   display: inline-block;
+   background-color: rgb(254, 128, 0);
+   color: white;
+   text-shadow: none;
+   border: none;
+   padding: 10px 20px;
+   font-size: 1.2rem;
+   border-radius: 5px;
+   text-decoration: none;
+   transition: .5s;
+}
+
+.btn:hover {
+   background-color: #d07125;
+   transform: scale(1.05);
+}
+
+/* Section Features */
+.features {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 50px;
+   background-color: white;
+}
+
+.features h3 {
+   font-size: 2rem;
+   text-align: center;
+   margin-bottom: 40px;
+}
+
+.features_2 {
+   display: flex;
+   justify-content: space-between;
+}
+
+
+.feature {
+   flex-basis: 300px;
+   padding: 20px;
+   margin: 20px;
+   text-align: center;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+   transition: .5s;
+   max-width: 340px;
+   z-index: 0
+}
+
+@media (max-width: 1279px) {
+   .features_2 {
+      display: block;
+   }
+}
+
+.feature:hover {
+   transform: scale(1.05);
+}
+
+.feature img {
+   width: 100px;
+   height: 100px;
+   margin-bottom: 20px;
+}
+
+.feature h4 {
+   font-size: 1.5rem;
+   margin-bottom: 20px;
+}
+
+.feature p {
+   font-size: 1.2rem;
+}
+
+@media (max-width: 540px) {
+   .feature {
+      margin: 10px 0 !important;
+      padding: 20px 10px !important;
+   }
+
+   .feature:hover {
+      transform: scale(1.03);
+   }
+}
+
+/* Section CTA */
+.cta {
+   background-color: #333;
+   color: white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   height: 200px;
+   padding: 45px 0 20px 0;
+   text-align: center;
+}
+
+.cta h3 {
+   font-size: 2rem;
+   margin: 0;
+}
+
+/* Pied de page */
+footer {
+   font-family: "mr-eaves-modern", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+   color: white;
+   text-align: center;
+   padding: 10px;
+}
+
+/* Animations */
+
+@keyframes fadein {
+   0% {
+      opacity: 0
+   }
+
+   100% {
+      opacity: 1
+   }
+}
