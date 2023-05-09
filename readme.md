@@ -1,8 +1,13 @@
-# Twiimer
+<h1 align="center">
+  <img src="img/logo_400.png" width="100">
+  <p size="54px" align="center">TwIIMer</p>
+</h1>
 
 ## Description
 
 Twiimer est un réseau social type twitter, développé en PHP/MySQL, HTML, CSS. Il a été réalisé dans le cadre d'un projet scolaire à l'IIM.
+
+[Lien de la vidéo](https://youtu.be/kkdxUpA6Dmw)
 
 ## Installation
 
