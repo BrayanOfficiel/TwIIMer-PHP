@@ -2,7 +2,9 @@
 
 require "connexionDB.php";
 
-$user = $_POST['user'];
+if (!isset($_SESSION['user'])) {
+    header("Location: /connexion.php");
+}
 $tweet_id = $_POST['tweet_id'];
 
 $requete = "DELETE FROM tweets WHERE id = :tweet";
@@ -12,5 +14,5 @@ $requete->execute([
 ]);
 
 
-header("Location: /index.php?users=$user&tweet_id=$tweet_id&delete=true");
+header("Location: /home.php?delete=true");
 ?>

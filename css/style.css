@@ -1,0 +1,168 @@
+@import "nav.css";
+@import "home.css";
+@import "profile.css";
+
+:root {
+  --primary-color: #ff9800;
+  --secondary-color: #d46a00;
+  --border-color: #ffcd82;
+  --error: #ff0000;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: #f5f8fa;
+  font-family: Arial, sans-serif;
+}
+
+hr {
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  margin: 20px 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* ------------------------------- */
+
+.log_form input {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.log_form input[type="submit"] {
+  margin-top: 10px;
+}
+
+/* ------------------------------- */
+
+.error {
+  color: var(--error);
+  margin-bottom: 10px;
+}
+
+/* ------------------------------- */
+
+footer {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* ------------------------------- */
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.quick_tweet {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.quick_tweet.quick_tweet_button {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quick_tweet.quick_tweet_button i {
+  transform: rotate(45deg);
+}
+
+.quick_tweet.quick_tweet_box {
+  display: none;
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.quick_tweet.quick_tweet_textarea {
+  box-sizing: border-box;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.quick_tweet.quick_send_button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.quick_tweet.quick_send_button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}

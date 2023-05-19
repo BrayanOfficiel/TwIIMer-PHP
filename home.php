@@ -1,13 +1,5 @@
 <?php
 require "php_includes/connexionDB.php";
-
-if (!isset($_GET['users']) || $_GET['users'] == "") {
-    $user_logged = false;
-    $current_user = "";
-} else {
-    $user_logged = true;
-    $current_user = $_GET['users'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -23,46 +15,17 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
     <?php require "php_includes/nav.php" ?>
 
     <main class="container">
-
-        <section class="profile-section">
-            <div class="profile">
-                <h1>
-                    <form method="GET">
-                        <select class="user_select" name="users" id="">
-                            <?php
-                            if ($user_logged == true) {
-                                echo "<option value='$current_user'>$current_user</option>";
-                            } else {
-                                echo "<option disabled selected value=''>Choisir un utilisateur</option>";
-                            }
-                            echo "<option disabled value=''>---------</option>";
-                            foreach ($users as $user) {
-                                echo "<option value=" . $user['identifiant'] . ">" . $user['identifiant'] . "</option>";
-                            }
-                            echo "<option disabled value=''>---------</option>";
-                            echo "<option value=''>Déconnexion</option>";
-                            ?>
-                        </select>
-                        <button type="submit">Se connecter</button>
-                    </form>
-                </h1>
-                <div>
-
-                </div>
-            </div>
-        </section>
-
-
         <section class="tweet-section">
             <div class='tweet_box'>
                 <div class='tweet_header'>
                     <h1 class="tweet_author">
                         <?php
-                        if ($user_logged == true) {
-                            echo "Bienvenue @$current_user</h1>";
+                        if (isset($_SESSION['user'])) {
+                            echo "Bienvenue @" . $_SESSION['user']['identifiant'] . "</h1>";
                             echo "le " . date('d/m/Y à H:i');
                             ?>
                     </div>
+
                     <div>
 
                         <?php
@@ -74,11 +37,12 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                         ?>
 
                         <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
-                            <input type="hidden" name="user" value="<?= $current_user ?>" id="">
+                            <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>" id="">
                             <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
                             <button type="submit">Tweemer</button>
                         </form>
                     </div>
+
                     <?php
                         } else {
                             echo "Bienvenue sur TwIIMer, connectez-vous ou inscrivez-vous</h1>";
@@ -100,7 +64,7 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                 <!-- form pour rechercher et trier-->
 
                 <form class="tweet_search" action="php_includes/tweet_search_and_sort.php" method="POST">
-                    <input type="hidden" name="user" value="<?= $current_user ?>" id="">
+                    <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>" id="">
                     <input type="text" name="search" placeholder="Rechercher des tweems">
                     <select name="sort">
                         <option value="recent">Les plus récents</option>
@@ -145,11 +109,11 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                             <?= $tweet['tweet'] ?>
                         </div>
                         <?php
-                        if ($user_logged == true) {
-                            if ($current_user == $tweet['author']) { ?>
+                        if (isset($_SESSION['user'])) {
+                            if ($_SESSION['user']['identifiant'] == $tweet['author']) { ?>
                                 <div class='tweet-footer'>
                                     <form action='php_includes/delete_tweet.php' method='post'>
-                                        <input type='hidden' name='user' value='<?= $current_user ?>' id=''>
+                                        <input type='hidden' name='user' value='<?= $_SESSION['user']['identifiant'] ?>' id=''>
                                         <button name="tweet_id" value="<?= $tweet['id'] ?>" type="submit"
                                             class="delete_tweet">Supprimer</button>
                                     </form>
@@ -162,6 +126,19 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
                 <?php } ?>
             </div>
         </section>
+        <?php
+        if (isset($_SESSION['user'])) { ?>
+            <div class="quick_tweet">
+                <button class="quick_tweet_button"><i class="fa-solid fa-feather"></i></button>
+                <div class="quick_tweet_box" style="display: none">
+                    <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
+                        <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>" id="">
+                        <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
+                        <button type="submit">Tweemer</button>
+                    </form>
+                </div>
+            </div>
+        <?php } ?>
     </main>
 
     <footer>
@@ -172,12 +149,23 @@ if (!isset($_GET['users']) || $_GET['users'] == "") {
     </footer>
 
     <script>
-        setTimeout(function () {
-            document.getElementById('tweet_deleted').style.animation = 'fadeOut 1s';
-        }, 3000);
-        setTimeout(function () {
-            document.getElementById('tweet_deleted').remove();
-        }, 4000);
+        let tweet_deleted = document.getElementById('tweet_deleted');
+
+        if (tweet_deleted) {
+            setTimeout(function () {
+                document.getElementById('tweet_deleted').style.animation = 'fadeOut 1s';
+            }, 3000);
+            setTimeout(function () {
+                document.getElementById('tweet_deleted').remove();
+            }, 4000);
+        }
+        const tweetButton = document.querySelector('.quick_tweet_button');
+        const tweetBox = document.querySelector('.quick_tweet_box');
+
+        tweetButton.addEventListener('click', () => {
+            tweetBox.style.display = (tweetBox.style.display === 'none') ? 'block' : 'none';
+        });
+
     </script>
 </body>
 

@@ -1,0 +1,12 @@
+#htacess file for making home.php the default page
+DirectoryIndex home.php
+#htacess file for removing .php extension
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+#htacess file for removing .html extension
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.html [NC,L]
+#error pages
+ErrorDocument 404 /home.php

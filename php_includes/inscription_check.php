@@ -41,16 +41,20 @@ if (!empty($fname) && !empty($lname) && !empty($username) && !empty($email) && !
                     ":fname" => $fname,
                     ":photo" => $photo
                 ]);
-                header("Location: /index.php?users=$username");
+                header("Location: /connexion.php");
             } else {
+                session_destroy();
                 header("Location: /inscription.php?error=email");
             }
         } else {
+            session_destroy();
             header("Location: /inscription.php?error=username");
         }
     } else {
+        session_destroy();
         header("Location: /inscription.php?error=password");
     }
 } else {
+    session_destroy();
     header("Location: /inscription.php?error=vide");
 }
