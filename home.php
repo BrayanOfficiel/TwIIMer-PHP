@@ -24,20 +24,21 @@ require "php_includes/connexionDB.php";
                             echo "Bienvenue @" . $_SESSION['user']['identifiant'] . "</h1>";
                             echo "le " . date('d/m/Y à H:i');
                             ?>
+                        </h1>
                     </div>
 
                     <div>
 
                         <?php
                         if (isset($_GET['error'])) {
-                            if ($_GET['error'] == "tweetVide") {
-                                echo "<p class='error'>Veuillez écrire quelque chose</p>";
-                            }
+                            if ($_GET['error'] == "tweetVide") { ?>
+                                <p class='error'>Veuillez écrire quelque chose</p>
+                            <?php }
                         }
                         ?>
 
                         <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
-                            <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>" id="">
+                            <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>">
                             <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
                             <button type="submit">Tweemer</button>
                         </form>
@@ -64,7 +65,8 @@ require "php_includes/connexionDB.php";
                 <!-- form pour rechercher et trier-->
 
                 <form class="tweet_search" action="php_includes/tweet_search_and_sort.php" method="POST">
-                    <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>" id="">
+                    <input type="hidden" name="url" value="<?= $url_actuelle ?>">
+
                     <input type="text" name="search" placeholder="Rechercher des tweems">
                     <select name="sort">
                         <option value="recent">Les plus récents</option>
@@ -113,9 +115,11 @@ require "php_includes/connexionDB.php";
                             if ($_SESSION['user']['identifiant'] == $tweet['author']) { ?>
                                 <div class='tweet-footer'>
                                     <form action='php_includes/delete_tweet.php' method='post'>
-                                        <input type='hidden' name='user' value='<?= $_SESSION['user']['identifiant'] ?>' id=''>
-                                        <button name="tweet_id" value="<?= $tweet['id'] ?>" type="submit"
-                                            class="delete_tweet">Supprimer</button>
+                                        <input type="hidden" name="url" value="<?= $url_actuelle ?>">
+
+                                        <button name="tweet_id" value="<?= $tweet['id'] ?>" type="submit" class="delete_tweet">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
                                     </form>
                                 </div>
                                 <?php
@@ -132,7 +136,7 @@ require "php_includes/connexionDB.php";
                 <button class="quick_tweet_button"><i class="fa-solid fa-feather"></i></button>
                 <div class="quick_tweet_box" style="display: none">
                     <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
-                        <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>" id="">
+                        <input type="hidden" name="url" value="<?= $url_actuelle ?>">
                         <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
                         <button type="submit">Tweemer</button>
                     </form>

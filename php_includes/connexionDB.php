@@ -14,4 +14,6 @@ try {
     die("<h1 style='color:red; font-family:ui-rounded; text-align:center'>Erreur de connexion à la base de données<br><br>Erreur : " . $dbError->getMessage() . "</h1>");
 }
 
+$url_actuelle = strtok($_SERVER["REQUEST_URI"], '?');
+
 ?>

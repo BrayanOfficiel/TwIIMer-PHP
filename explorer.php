@@ -1,11 +1,5 @@
 <?php
-
 require "php_includes/connexionDB.php";
-
-if (!isset($_SESSION['user'])) {
-    header("Location: /connexion.php");
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -13,34 +7,17 @@ if (!isset($_SESSION['user'])) {
 
 <head>
     <?php require "php_includes/head.php" ?>
-    <title>Profil - TwIIMer</title>
+    <title>Accueil - TwIIMer</title>
 </head>
 
 <body>
+
     <?php require "php_includes/nav.php" ?>
+
     <main class="container">
         <section class="tweets_section">
-            <div class="profile_container">
-                <img src="<?php echo $_SESSION['user']['photo']; ?>" alt="Profile Picture">
-                <h2>
-                    <?php echo $_SESSION['user']['prenom'] . ' ' . $_SESSION['user']['nom']; ?>
-                </h2>
-                <p>Identifiant:
-                    <?php echo $_SESSION['user']['identifiant']; ?>
-                </p>
-                <p>Email:
-                    <?php echo $_SESSION['user']['email']; ?>
-                </p>
-                <p>Créé le:
-                    <?php
-                    $date = new DateTime($_SESSION['user']['date']);
-                    echo $date->format('d/m/Y à H\hi');
-                    ?>
-                </p>
-                <a href="php_includes/logout.php"><button>Se déconnecter</button></a>
-            </div>
             <div class="tweets-header">
-                <h1>Vos Tweems</h1>
+                <h1>Les Tweems</h1>
 
                 <!-- form pour rechercher et trier-->
 
@@ -56,7 +33,7 @@ if (!isset($_SESSION['user'])) {
                 </form>
 
             </div>
-            <div class="tweets_container">
+            <div class="tweets_container_grid">
                 <?php
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == true) {
@@ -67,16 +44,16 @@ if (!isset($_SESSION['user'])) {
                 if (isset($_GET['search']) && isset($_GET['sort'])) {
                     $search = $_GET['search'];
                     $sort = $_GET['sort'];
-                    $requete = "SELECT * FROM tweets WHERE author = 'Brayan' AND tweet LIKE '%$search%' ORDER BY date $sort";
+                    $requete = "SELECT * FROM tweets WHERE tweet LIKE '%$search%' ORDER BY date $sort";
                 } else {
-                    $requete = "SELECT * FROM tweets WHERE author = '" . $_SESSION['user']['identifiant'] . "' ORDER BY date DESC";
+                    $requete = "SELECT * FROM tweets ORDER BY date DESC";
                 }
                 $requete = $database->prepare($requete);
                 $requete->execute();
                 $tweets = $requete->fetchAll(PDO::FETCH_ASSOC);
 
                 foreach ($tweets as $tweet) { ?>
-                    <div class='tweet_box'>
+                    <div class='tweet_box_grid'>
                         <div class='tweet_header'>
                             <h1 class="tweet_author">
                                 <?= "@" . $tweet['author'] ?>
@@ -93,7 +70,7 @@ if (!isset($_SESSION['user'])) {
                         <?php
                         if (isset($_SESSION['user'])) {
                             if ($_SESSION['user']['identifiant'] == $tweet['author']) { ?>
-                                <div class='tweet-footer'>
+                                <div class='tweet_footer'>
                                     <form action='php_includes/delete_tweet.php' method='post'>
                                         <input type="hidden" name="url" value="<?= $url_actuelle ?>">
 
@@ -152,3 +129,5 @@ if (!isset($_SESSION['user'])) {
 
     </script>
 </body>
+
+</html>

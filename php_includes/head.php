@@ -1,7 +1,7 @@
 <head>
     <?php
     date_default_timezone_set('Europe/Paris');
-    $stylesheet = "/css/style.css?version=" . date("H:i:s_d/m/Y", filemtime('style.css'));
+    $stylesheet = "/css/style.css?version=" . date("s.", filemtime('css/style.css')) . date("s.", filemtime('css/explorer.css')) . date("s.", filemtime('css/nav.css')) . date("s.", filemtime('css/profile.css')) . date("s", filemtime('css/quick_tweet.css'));
     ?>
 
     <meta charset="UTF-8">

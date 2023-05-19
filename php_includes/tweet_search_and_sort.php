@@ -4,7 +4,7 @@ require "connexionDB.php";
 
 $search = $_POST['search'];
 $sort = $_POST['sort'];
-$user = $_POST['user'];
+$url = $_POST['url'];
 
 if ($sort == "ancien") {
     $sort = "ASC";
@@ -19,7 +19,7 @@ echo $sort;
 echo $user;
 
 if (empty($user) || $user == "") {
-    header("Location: /home.php?search=$search&sort=$sort");
+    header("Location: $url?search=$search&sort=$sort");
 } else {
-    header("Location: /home.php?search=$search&sort=$sort&users=$user");
+    header("Location: $url?search=$search&sort=$sort&users=$user");
 } ?>
