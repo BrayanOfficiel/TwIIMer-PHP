@@ -1,17 +1,23 @@
+<!-- Même code que la page d'accueil a l'exception que quelques classes modifiées poura afficher les tweets sous forme de grid -->
+
 <?php
+// Inclusion du script de connexion à la base de données
 require "php_includes/connexionDB.php";
 ?>
 
+<!-- Début du code HTML -->
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
+    <!-- Inclusion du fichier head.php -->
     <?php require "php_includes/head.php" ?>
     <title>Accueil - TwIIMer</title>
 </head>
 
 <body>
 
+    <!-- Inclusion du fichier nav.php -->
     <?php require "php_includes/nav.php" ?>
 
     <main class="container">
@@ -31,6 +37,10 @@ require "php_includes/connexionDB.php";
                     </select>
                     <button type="submit">Rechercher</button>
                 </form>
+                <div>
+                    <a href="explorer.php"><button class="grid_button"><i class="fa-solid fa-grip"></i></button></a>
+                    <a href="home.php"><button class="grid_button"><i class="fa-solid fa-list"></i></button></a>
+                </div>
 
             </div>
             <div class="tweets_container_grid">

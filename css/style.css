@@ -1,14 +1,20 @@
 @import "nav.css";
-@import "home.css";
+@import "tweets.css";
 @import "profile.css";
 @import "quick_tweet.css";
-@import "explorer.css";
+@import "tweets_grid.css";
 
 :root {
   --primary-color: #ff9800;
   --secondary-color: #d46a00;
   --border-color: #ffcd82;
   --error: #ff0000;
+  --true-bg: #5bd35f9b;
+  --true-border: #4caf50;
+  --false-bg: #ff00009b;
+  --false-border: #ff0000;
+  --background-color: #f5f8fa;
+  --font-family: Arial, sans-serif;
 }
 
 body,
@@ -19,8 +25,8 @@ html {
 }
 
 body {
-  background-color: #f5f8fa;
-  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
 }
 
 hr {
@@ -33,6 +39,7 @@ main {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  transition: 0.3s ease-in-out;
 }
 
 section {
@@ -55,8 +62,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* ------------------------------- */
-
 .log_form input {
   display: block;
   margin-bottom: 10px;
@@ -70,22 +75,15 @@ button:hover {
   margin-top: 10px;
 }
 
-/* ------------------------------- */
-
 .error {
   color: var(--error);
   margin-bottom: 10px;
 }
 
-/* ------------------------------- */
-
 footer {
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
-
-/* ------------------------------- */
 
 @keyframes fadeOut {
   from {

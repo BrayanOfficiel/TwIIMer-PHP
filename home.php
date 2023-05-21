@@ -1,20 +1,25 @@
 <?php
+// Inclusion du script de connexion à la base de données
 require "php_includes/connexionDB.php";
 ?>
 
+<!-- Début du code HTML -->
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
+    <!-- Inclusion du fichier head.php -->
     <?php require "php_includes/head.php" ?>
     <title>Accueil - TwIIMer</title>
 </head>
 
 <body>
 
+    <!-- Inclusion du fichier nav.php -->
     <?php require "php_includes/nav.php" ?>
 
     <main class="container">
+        <!-- Section pour tweeter -->
         <section class="tweet-section">
             <div class='tweet_box'>
                 <div class='tweet_header'>
@@ -32,6 +37,7 @@ require "php_includes/connexionDB.php";
                         <?php
                         if (isset($_GET['error'])) {
                             if ($_GET['error'] == "tweetVide") { ?>
+                                <!-- Affichage d'une erreur si le tweet est vide -->
                                 <p class='error'>Veuillez écrire quelque chose</p>
                             <?php }
                         }
@@ -58,12 +64,12 @@ require "php_includes/connexionDB.php";
 
         <hr>
 
+        <!-- Section pour afficher les tweets -->
         <section class="tweets_section">
             <div class="tweets-header">
                 <h1>Les Tweems</h1>
 
-                <!-- form pour rechercher et trier-->
-
+                <!-- Formulaire pour rechercher et trier les tweets -->
                 <form class="tweet_search" action="php_includes/tweet_search_and_sort.php" method="POST">
                     <input type="hidden" name="url" value="<?= $url_actuelle ?>">
 
@@ -74,16 +80,17 @@ require "php_includes/connexionDB.php";
                     </select>
                     <button type="submit">Rechercher</button>
                 </form>
+                <div>
+                    <button id="grille_btn" class="grid_button" onclick="affichageDesTweetsGrille()"><i
+                            class="fa-solid fa-grip"></i></button>
+                    <button id="liste_btn" class="grid_button" onclick="affichageDesTweetsListe()"><i
+                            class="fa-solid fa-list"></i></button>
+                </div>
 
             </div>
-            <div class="tweets_container">
+            <div class="tweets_container" id="tweet_container">
                 <?php
-                if (isset($_GET['delete'])) {
-                    if ($_GET['delete'] == true) {
-                        echo "<p id='tweet_deleted' class='tweet_suppr'>✅&nbsp;&nbsp; Tweet supprimé avec succès</p>";
-                    }
-                }
-
+                // Si une recherche et un tri ont été effectués, on affiche les tweets correspondants, sinon on affiche tous les tweets par ordre décroissant
                 if (isset($_GET['search']) && isset($_GET['sort'])) {
                     $search = $_GET['search'];
                     $sort = $_GET['sort'];
@@ -94,56 +101,86 @@ require "php_includes/connexionDB.php";
                 $requete = $database->prepare($requete);
                 $requete->execute();
                 $tweets = $requete->fetchAll(PDO::FETCH_ASSOC);
-
-                foreach ($tweets as $tweet) { ?>
+                // On affiche les tweets
+                foreach ($tweets as $tweet) {
+                    $i = 0;
+                    ?>
                     <div class='tweet_box'>
                         <div class='tweet_header'>
                             <h1 class="tweet_author">
                                 <?= "@" . $tweet['author'] ?>
                             </h1>
-                            à tweeté le
-                            <?php
-                            $date = new DateTime($tweet['date']);
-                            echo $date->format('d/m/Y à H:i');
-                            ?>
+                            <div class="tweet_date">
+                                à tweeté le
+                                <?php
+                                // On affiche la date de création du tweet au format JJ/MM/AAAA à HH:MM
+                                $date = new DateTime($tweet['date']);
+                                echo $date->format('d/m/Y à H:i');
+                                ?>
+                            </div>
                         </div>
                         <div class='tweet_content'>
                             <?= $tweet['tweet'] ?>
                         </div>
+                        <!-- Si l'utilisateur est connecté et que le tweet lui appartient, on affiche un bouton pour supprimer le tweet -->
                         <?php
                         if (isset($_SESSION['user'])) {
                             if ($_SESSION['user']['identifiant'] == $tweet['author']) { ?>
                                 <div class='tweet-footer'>
-                                    <form action='php_includes/delete_tweet.php' method='post'>
-                                        <input type="hidden" name="url" value="<?= $url_actuelle ?>">
 
-                                        <button name="tweet_id" value="<?= $tweet['id'] ?>" type="submit" class="delete_tweet">
-                                            <i class="fa-solid fa-trash"></i>
+                                    <button onclick="supprimerTweet(<?= $i ?>, true)" class="delete_tweet"><i
+                                            class="fa-solid fa-trash"></i>Supprimer le tweet</button>
+
+                                    <div class="delete_tweet" id="tweet_delete_<?= $i ?>" style="display: none;">
+
+                                        <form action='php_includes/delete_tweet.php' method='post'>
+                                            <input type="hidden" name="url" value="<?= $url_actuelle ?>">
+
+                                            <button name="tweet_id" value="<?= $tweet['id'] ?>" type="submit"
+                                                class="delete_tweet_true">
+                                                <i class="fa-solid fa-check"></i>
+                                                Confirmer
+                                            </button>
+                                        </form>
+                                        <button class="delete_tweet_false" onclick="supprimerTweet(<?= $i ?>, false)">
+                                            <i class="fa-solid fa-xmark"></i>
+                                            Annuler
                                         </button>
-                                    </form>
+                                    </div>
                                 </div>
                                 <?php
                             }
                         }
                         ?>
                     </div>
-                <?php } ?>
+                    <?php
+                    $i++;
+                } ?>
             </div>
         </section>
-        <?php
-        if (isset($_SESSION['user'])) { ?>
-            <div class="quick_tweet">
-                <button class="quick_tweet_button"><i class="fa-solid fa-feather"></i></button>
-                <div class="quick_tweet_box" style="display: none">
-                    <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
-                        <input type="hidden" name="url" value="<?= $url_actuelle ?>">
-                        <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
-                        <button type="submit">Tweemer</button>
-                    </form>
-                </div>
-            </div>
-        <?php } ?>
+
+
     </main>
+    <?php
+    if (isset($_GET['delete'])) {
+        if ($_GET['delete'] == true) { ?>
+            <!-- Notification de suppresison d'un tweet -->
+            <p id='tweet_deleted' class='tweet_suppr'>✅&nbsp;&nbsp; Tweet supprimé avec succès</p>
+        <?php }
+    }
+    if (isset($_SESSION['user'])) { ?>
+        <!-- Si l'utilisateur est connecté, on affiche un bouton en bas à droite pour tweeter rapidement -->
+        <div class="quick_tweet">
+            <button id="quick_tweet_button" onclick="showQuickTweet()"><i class="fa-solid fa-feather"></i></button>
+            <div id="quick_tweet_box" style="display: none">
+                <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
+                    <input type="hidden" name="url" value="<?= $url_actuelle ?>">
+                    <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
+                    <button type="submit">Tweemer</button>
+                </form>
+            </div>
+        </div>
+    <?php } ?>
 
     <footer>
         <p>© 2023 TwIIMer, Inc.</p>
@@ -152,25 +189,7 @@ require "php_includes/connexionDB.php";
         </a>
     </footer>
 
-    <script>
-        let tweet_deleted = document.getElementById('tweet_deleted');
-
-        if (tweet_deleted) {
-            setTimeout(function () {
-                document.getElementById('tweet_deleted').style.animation = 'fadeOut 1s';
-            }, 3000);
-            setTimeout(function () {
-                document.getElementById('tweet_deleted').remove();
-            }, 4000);
-        }
-        const tweetButton = document.querySelector('.quick_tweet_button');
-        const tweetBox = document.querySelector('.quick_tweet_box');
-
-        tweetButton.addEventListener('click', () => {
-            tweetBox.style.display = (tweetBox.style.display === 'none') ? 'block' : 'none';
-        });
-
-    </script>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>

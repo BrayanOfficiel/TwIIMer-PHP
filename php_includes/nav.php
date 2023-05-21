@@ -36,13 +36,3 @@
     <?php } ?>
   </ul>
 </nav>
-
-<script>
-  const navToggle = document.getElementById('navToggle');
-  const mainNav = document.getElementById('mainNav');
-
-  navToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('open');
-    navToggle.classList.toggle('open');
-  });
-</script>

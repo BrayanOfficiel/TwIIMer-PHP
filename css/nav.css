@@ -32,12 +32,12 @@
 }
 
 .nav {
-  background-color: rgb(255, 152, 0);
+  background-color: var(--primary-color);
   color: #fff;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
   height: 100%;
   min-height: 100%;
   min-width: 290px;
@@ -57,32 +57,27 @@
 .nav_logo {
   text-decoration: none;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   color: var(--text-color);
   margin-bottom: 20px;
 }
-
-.nav_logo * {
-  margin: 0;
-  padding: 0;
-}
-
 .nav_logo .logo {
-  height: 60px;
+  height: 66.5px;
 }
 
 .nav_logo .logo_text {
   font-family: "veneer", sans-serif;
-  font-size: 34px;
-  padding: 10px 20px;
+  font-size: 44px;
+  border-radius: 14px;
+  margin: 0;
+  padding: 5px 10px;
   text-align: center;
+  transition: 0.3s ease;
 }
 
 .nav_logo:hover .logo_text {
-  border-radius: 14px;
   background-color: var(--secondary-color);
-  margin: 0;
 }
 
 .nav_list {
