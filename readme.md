@@ -9,7 +9,7 @@ Twiimer est un réseau social type twitter, développé en PHP/MySQL, HTML, CSS.
 
 [Lien de la vidéo](https://youtu.be/kkdxUpA6Dmw)
 
-## Prérequis
+## Prérequis (exécution locale)
 
 - MAMP (macOS)
 - WAMP ou Laragon (Windows)
@@ -17,7 +17,7 @@ Twiimer est un réseau social type twitter, développé en PHP/MySQL, HTML, CSS.
 
 ## Installation
 
-Pour installer le projet, il faut cloner le repository sur votre machine. Ensuite, il faut créer une base de données nommée `portail_restart` et importer le fichier `portail_restart.sql` dans votre base de données.
+Pour installer le projet, il faut cloner le repository sur votre machine. Ensuite, il faut créer une base de données nommée `portail_restart` et importer le fichier `portail_restart.sql` dans votre [base de données](http://localhost/phpMyAdmin5/).
 
 ## Utilisation
 
