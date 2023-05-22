@@ -1,10 +1,10 @@
 <?php
 
+require "connexionDB.php";
+
 if (!isset($_SESSION['user'])) {
     header("Location: /connexion.php");
 }
-
-require "connexionDB.php";
 
 $tweet = $_POST['tweet'];
 $url = $_POST['url'];

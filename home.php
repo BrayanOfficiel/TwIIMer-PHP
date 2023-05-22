@@ -45,6 +45,7 @@ require "php_includes/connexionDB.php";
 
                         <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
                             <input type="hidden" name="user" value="<?= $_SESSION['user']['identifiant'] ?>">
+                            <input type="hidden" name="url" value="<?= $url_actuelle ?>">
                             <textarea name="tweet" id="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
                             <button type="submit">Tweemer</button>
                         </form>
