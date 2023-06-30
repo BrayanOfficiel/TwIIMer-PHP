@@ -5,6 +5,11 @@ require "connexionDB.php";
 $search = $_POST['search'];
 $sort = $_POST['sort'];
 $url = $_POST['url'];
+$hashtag = $_POST['hashtag'];
+
+if ($hashtag == "Aucun") {
+    $hashtag = "";
+}
 
 if ($sort == "ancien") {
     $sort = "ASC";
@@ -14,12 +19,7 @@ if ($sort == "ancien") {
     $sort = "DESC";
 }
 
-echo $search;
-echo $sort;
-echo $user;
 
-if (empty($user) || $user == "") {
-    header("Location: $url?search=$search&sort=$sort");
-} else {
-    header("Location: $url?search=$search&sort=$sort&users=$user");
-} ?>
+header("Location: $url?search=$search&sort=$sort&hashtag=$hashtag");
+
+?>

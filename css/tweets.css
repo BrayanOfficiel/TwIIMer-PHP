@@ -1,3 +1,10 @@
+.tweets_container_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  margin-top: 20px;
+}
+
 .new_tweet textarea {
   box-sizing: border-box;
   width: 100%;
@@ -23,6 +30,20 @@
   align-items: center;
 }
 
+.hashtag_link {
+  color: black;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.tweet_box .tweet_header .pp {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
 .tweet_box .tweet_header .tweet_author {
   display: flex;
   align-items: center;
@@ -42,12 +63,19 @@
   line-height: 1.3;
 }
 
+.tweet_box .tweet_image {
+  width: 25%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
+
 .tweet_box .tweet_date {
   font-size: 18px;
   color: #999;
 }
 
-.tweet_suppr {
+.success {
   position: fixed;
   top: 0;
   right: 30px;
@@ -116,7 +144,11 @@
   margin-right: 10px;
 }
 
-.tweet_search select {
+.new_tweet button:last-child {
+  float: right;
+}
+
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -127,21 +159,45 @@
   margin-right: 10px;
   font-size: 18px;
   cursor: pointer;
+  position: relative;
 }
 
-/* Reponsive width 620px */
-
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 1200px) {
   .tweet_search {
     flex-wrap: wrap;
+    margin-bottom: 10px;
   }
-  .tweet_search input,
-  .tweet_search select,
-  .tweet_search button {
+  .tweet_search input {
     width: 100%;
     margin-bottom: 10px;
     margin-right: 0;
     transition: all 0.3s ease-in-out;
+  }
+  .tweet_search select,
+  .tweet_search button {
+    width: 32%;
+  }
+}
+
+/* Reponsive width 800px */
+
+@media screen and (max-width: 800px) {
+  .tweet_search input,
+  .tweet_search select,
+  .tweet_search button,
+  .new_tweet input,
+  .new_tweet select,
+  .new_tweet button {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  .new_tweet button:last-child {
+    float: none;
+  }
+  .tweet_search {
+    flex-wrap: wrap;
   }
 }
 

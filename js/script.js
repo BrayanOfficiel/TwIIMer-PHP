@@ -18,17 +18,31 @@ navToggle.addEventListener("click", () => {
 
 // ----------------------------------------------
 
-// Script pour afficher la notification de suppression d'un tweet
-let tweet_deleted = document.getElementById("tweet_deleted");
+//foreach pour les notifications avec la class .error et .success, si elle existe, on affiche le message et on le supprime au bout de 5 secondes
+const error = document.querySelectorAll(".error");
+const success = document.querySelectorAll(".success");
 
-if (tweet_deleted) {
-  setTimeout(function () {
-    document.getElementById("tweet_deleted").style.animation = "fadeOut 1s";
-  }, 3000);
-  setTimeout(function () {
-    document.getElementById("tweet_deleted").remove();
-  }, 4000);
-}
+error.forEach((element) => {
+  if (error.innerHTML != "") {
+    setTimeout(function () {
+      element.style.animation = "fadeOut 1s";
+    }, 3000);
+    setTimeout(function () {
+      element.remove();
+    }, 4000);
+  }
+});
+
+success.forEach((element) => {
+  if (success.innerHTML != "") {
+    setTimeout(function () {
+      element.style.animation = "fadeOut 1s";
+    }, 3000);
+    setTimeout(function () {
+      element.remove();
+    }, 4000);
+  }
+});
 
 // ----------------------------------------------
 
@@ -78,7 +92,7 @@ function supprimerTweet(id, confirmation) {
 // ----------------------------------------------
 
 // Responsive
-if (window.innerWidth < 768) {
+if (window.innerWidth < 800) {
   document.getElementById("grille_btn").style.display = "none";
   document.getElementById("liste_btn").style.display = "none";
   affichageDesTweetsListe();
@@ -92,14 +106,14 @@ if (mainNav.classList.contains("open") && window.innerWidth > 1000) {
   document.getElementsByTagName("main")[0].style.transform =
     "translateX(145px)";
 } else {
-  document.getElementsByTagName("main")[0].style.maxWidth = "900px";
+  document.getElementsByTagName("main")[0].style.maxWidth = "100%";
   document.getElementsByTagName("main")[0].style.transform = "translateX(0)";
 }
 
 // Au resize de la fenêtre
 
 window.onresize = function () {
-  if (window.innerWidth < 768) {
+  if (window.innerWidth < 800) {
     document.getElementById("grille_btn").style.display = "none";
     document.getElementById("liste_btn").style.display = "none";
     affichageDesTweetsListe();
@@ -122,7 +136,7 @@ window.onresize = function () {
     document.getElementsByTagName("main")[0].style.transform =
       "translateX(145px)";
   } else {
-    document.getElementsByTagName("main")[0].style.maxWidth = "75%";
+    document.getElementsByTagName("main")[0].style.maxWidth = "100%";
     document.getElementsByTagName("main")[0].style.transform = "translateX(0)";
   }
 };

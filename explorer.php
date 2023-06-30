@@ -47,7 +47,7 @@ require "php_includes/connexionDB.php";
                 <?php
                 if (isset($_GET['delete'])) {
                     if ($_GET['delete'] == true) {
-                        echo "<p id='tweet_deleted' class='tweet_suppr'>✅&nbsp;&nbsp; Tweet supprimé avec succès</p>";
+                        echo "<p id='tweet_deleted' class='success'>✅&nbsp;&nbsp; Tweet supprimé avec succès</p>";
                     }
                 }
 
