@@ -36,7 +36,8 @@ if (!empty($fname) && !empty($lname) && !empty($username) && !empty($email) && !
             ]);
             $user_mail = $requete_mail->fetch(PDO::FETCH_ASSOC);
             if (!$user_mail) {
-                // Si l'adresse mail n'est pas déja utilisée, on peut inscrire l'utilisateur
+                // Si l'adresse mail n'est pas déja utilisée, on peut inscrire l'utilisateur et on hash son mot de passe
+                $password = password_hash($password, PASSWORD_DEFAULT);
                 $requete = "INSERT INTO users (identifiant, email, password, nom, prenom, photo) VALUES (:username, :email, :password, :lname, :fname, :photo)";
                 $requete = $database->prepare($requete);
                 $requete->execute([

@@ -1,0 +1,43 @@
+.login_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.log_form {
+  min-width: 400px;
+  border: 1px solid #ccc;
+  padding: 30px;
+  background-color: white;
+  box-shadow: 0px 0px 10px #ccc;
+  border-radius: 10px;
+}
+
+.log_form h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.log_form input {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.log_form div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.log_form div input {
+  width: 49%;
+}
+
+.log_form input[type="submit"] {
+  margin-top: 10px;
+}

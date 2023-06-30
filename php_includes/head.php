@@ -2,7 +2,7 @@
 <?php
 date_default_timezone_set('Europe/Paris');
 $stylesheet = "/css/style.css?version=" . date("s.", filemtime('css/style.css')) . date("s.", filemtime('css/tweets.css')) . date("s.", filemtime('css/nav.css')) . date("s.", filemtime('css/profile.css')) . date("s", filemtime('css/quick_tweet.css'));
-$stylesheet_min = "/css/style_min.css?version=" . date("s.", filemtime('css/style_min.css'));
+$stylesheet_min = "/css/style_min.css?version=" . date("s.", filemtime('css/login.css'));
 ?>
 
 <meta charset="UTF-8">

@@ -2,7 +2,7 @@
 @import "tweets.css";
 @import "profile.css";
 @import "quick_tweet.css";
-@import "tweets_grid.css";
+@import "login.css";
 
 :root {
   --primary-color: #ff9800;
@@ -46,7 +46,8 @@ section {
   margin-bottom: 20px;
 }
 
-button {
+button,
+input::file-selector-button {
   background-color: var(--primary-color);
   color: #fff;
   border: none;
@@ -62,18 +63,7 @@ button:hover {
   transform: scale(1.05);
 }
 
-.log_form input {
-  display: block;
-  margin-bottom: 10px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
 
-.log_form input[type="submit"] {
-  margin-top: 10px;
-}
 
 .error {
   position: fixed;

@@ -92,7 +92,11 @@ function supprimerTweet(id, confirmation) {
 // ----------------------------------------------
 
 // Responsive
-if (window.innerWidth < 800) {
+if (
+  window.innerWidth < 800 &&
+  document.getElementById("grille_btn") != null &&
+  document.getElementById("liste_btn") != null
+) {
   document.getElementById("grille_btn").style.display = "none";
   document.getElementById("liste_btn").style.display = "none";
   affichageDesTweetsListe();
@@ -113,11 +117,18 @@ if (mainNav.classList.contains("open") && window.innerWidth > 1000) {
 // Au resize de la fenêtre
 
 window.onresize = function () {
-  if (window.innerWidth < 800) {
+  if (
+    window.innerWidth < 800 &&
+    document.getElementById("grille_btn") != null &&
+    document.getElementById("liste_btn") != null
+  ) {
     document.getElementById("grille_btn").style.display = "none";
     document.getElementById("liste_btn").style.display = "none";
     affichageDesTweetsListe();
-  } else {
+  } else if (
+    document.getElementById("grille_btn") != null &&
+    document.getElementById("liste_btn") != null
+  ) {
     document.getElementById("grille_btn").style.display = "inline";
     document.getElementById("liste_btn").style.display = "inline";
   }

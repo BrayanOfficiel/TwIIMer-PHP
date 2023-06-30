@@ -17,9 +17,9 @@ if (isset($_SESSION['user'])) {
 
     <?php require "php_includes/nav.php" ?>
 
-    <main class="container">
+    <main class="container login_container">
         <section>
-            <h2>Connexion</h2>
+
             <?php
             if (isset($_GET['error'])) {
                 if ($_GET['error'] == "vide") {
@@ -32,12 +32,16 @@ if (isset($_SESSION['user'])) {
             }
             ?>
             <form class="log_form" method="POST" action="php_includes/connexion_check.php">
+                <h2><i class="fa-solid fa-user"></i> Connexion</h2>
                 <input placeholder="Identifiant" type="text" name="username">
                 <input placeholder="Mot de passe" type="password" name="password">
                 <button type="submit">Se connecter</button>
             </form>
         </section>
     </main>
+    <script src="/js/script.js"></script>
+    <script src="/js/stopScroll.js"></script>
+    <script src="/js/localStorage.js"></script>
 </body>
 
 </html>

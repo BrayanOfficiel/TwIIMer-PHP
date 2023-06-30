@@ -49,3 +49,14 @@
   margin-top: 0;
   margin-bottom: 20px;
 }
+
+.quick_tweet button[type="submit"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+.quick_tweet select,
+.quick_tweet input {
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}

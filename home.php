@@ -286,10 +286,31 @@ require "php_includes/connexionDB.php";
         <div class="quick_tweet">
             <button id="quick_tweet_button" onclick="showQuickTweet()"><i class="fa-solid fa-feather"></i></button>
             <div id="quick_tweet_box" style="display: none">
-                <form class="new_tweet" action="php_includes/new_tweet.php" method="post">
+                <form class="new_tweet" action="php_includes/new_tweet.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="url" value="<?= $url_actuelle ?>">
                     <textarea name="tweet" placeholder="Quoi de neuf ?" rows="10"></textarea>
-                    <button type="submit">Tweemer</button>
+                    <select name="hashtag">
+                        <option selected disabled>Hashtag</option>
+                        <option>Aucun</option>
+                        <option disabled>---------------</option>
+                        <option value="Nanterre">#Nanterre</option>
+                        <option value="Gaming">#Gaming</option>
+                        <option value="Covid">#Covid</option>
+                        <option value="Technologie">#Technologie</option>
+                        <option value="Sport">#Sport</option>
+                        <option value="Politique">#Politique</option>
+                        <option value="Musique">#Musique</option>
+                        <option value="Cinema">#Cinema</option>
+                        <option value="JeuxVideo">#JeuxVideo</option>
+                        <option value="Culture">#Culture</option>
+                        <option value="Sante">#Sante</option>
+                        <option value="Economie">#Economie</option>
+                        <option value="Education">#Education</option>
+                        <option value="Environnement">#Environnement</option>
+                        <option value="Mode">#Mode</option>
+                    </select>
+                    <input type="file" name="image" accept="image/png, image/gif, image/jpeg, image/jpg">
+                    <button type="submit"><i class="fa-solid fa-dove"></i> Tweemer</button>
                 </form>
             </div>
         </div>

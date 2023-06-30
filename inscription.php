@@ -14,9 +14,9 @@ require "php_includes/connexionDB.php";
 
     <?php require "php_includes/nav.php" ?>
 
-    <main class="container">
+    <main class="container login_container">
         <section>
-            <h2>Inscription</h2>
+
             <?php
             if (isset($_GET['error'])) {
                 if ($_GET['error'] == "vide") {
@@ -31,16 +31,26 @@ require "php_includes/connexionDB.php";
             }
             ?>
             <form class="log_form" method="POST" action="php_includes/inscription_check.php">
-                <input required placeholder="Nom" type="text" name="lname">
-                <input required placeholder="Prénom" type="text" name="fname">
+                <h2><i class="fa-solid fa-user-pen"></i> Inscription</h2>
+                <div>
+                    <input required placeholder="Nom" type="text" name="lname">
+                    <input required placeholder="Prénom" type="text" name="fname">
+                </div>
                 <input required placeholder="Identifiant" type="text" name="username">
-                <input placeholder="Lien de votre photo de profil" type="text" name="photo">
+                <input placeholder="Lien de votre photo de profil (laisser vide pour la photo par défaut)" type="text"
+                    name="photo">
                 <input required placeholder="e-mail" type="email" name="email">
-                <input required placeholder="Mot de passe" type="password" name="password">
-                <input required placeholder="Confirmer le mot de passe" type="password" name="password_confirm">
+                <div>
+                    <input required placeholder="Mot de passe" type="password" name="password">
+                    <input required placeholder="Confirmer le mot de passe" type="password" name="password_confirm">
+                </div>
                 <button type="submit">S'inscrire</button>
             </form>
         </section>
+    </main>
+    <script src="/js/script.js"></script>
+    <script src="/js/stopScroll.js"></script>
+    <script src="/js/localStorage.js"></script>
 </body>
 
 </html>
